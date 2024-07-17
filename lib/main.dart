@@ -10,6 +10,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     GetMaterialApp(
+      initialRoute: "home",
       debugShowCheckedModeBanner: false,
       routes: appRoutes,
       theme: lightTheme,

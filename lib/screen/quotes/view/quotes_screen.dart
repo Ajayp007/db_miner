@@ -47,7 +47,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Get.toNamed('detail', arguments: [m1.quotes![index]]);
+              Get.toNamed('detail', arguments: [m1.quotes![index],m1.image![index],index]);
             },
             child: Container(
               height: 80,
@@ -60,7 +60,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
                     image: NetworkImage(
-                        "${controller.getQuotesList[index].image![0]}"),
+                        "${m1.image![index]}"),
                     fit: BoxFit.cover),
               ),
               child: Text(

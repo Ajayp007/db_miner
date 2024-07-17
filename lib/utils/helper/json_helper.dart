@@ -1,19 +1,15 @@
 import 'dart:convert';
 
-import 'package:db_miner/screen/home/model/home_model.dart';
 import 'package:flutter/services.dart';
 
-class JsonHelper {
-  Future<List<HomeModel>> getQuotesJson() async {
-    String quotesString =
-        await rootBundle.loadString("assets/json/quotes.json");
+import '../../screen/home/model/home_model.dart';
 
-    List quotes = jsonDecode(quotesString);
-    List<HomeModel> q1 = quotes
-        .map(
-          (e) => HomeModel.mapToModel((e)),
-        )
-        .toList();
-    return q1;
+class JsonHelper {
+  Future<List<HomeModel>> getJson() async {
+    String jsonString = await rootBundle.loadString("assets/json/quotes.json");
+    List json = jsonDecode(jsonString);
+
+    List<HomeModel> data = json.map((e) => HomeModel.mapToModel(e)).toList();
+    return data;
   }
 }

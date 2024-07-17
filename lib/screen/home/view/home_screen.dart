@@ -5,8 +5,6 @@ import 'package:db_miner/utils/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../utils/shared_helper.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -20,70 +18,52 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    controller.getQuotesData();
+    controller.getJsonData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Quotes App",
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: const Color(0xff094859),
-        actions: [
-          Switch(
-            activeColor: const Color(0xff2395b2),
-            value: themeController.themeMode!,
-            onChanged: (value) {
-              setThemeData(value);
-              themeController.setTheme();
-            },
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_border_outlined,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
-      body: Container(
-        height: MediaQuery.sizeOf(context).height,
-        width: MediaQuery.sizeOf(context).width,
-        padding: const EdgeInsets.all(10),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: NetworkImage(
-                  "https://wallpapers.com/images/hd/love-yourself-quotes-43ff3kbx1bcc7shf.jpg"),
-              fit: BoxFit.cover),
-        ),
-        child: Column(
+      body: Obx(
+        () => Column(
           children: [
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5),
               child: Container(),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: controller.quotesList.length,
+              child: GridView.builder(
+                itemCount: controller.getQuotesList.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    onTap: () {
-                      Navigator.pushNamed(context, 'detail', arguments: index);
-                    },
-                    leading: Text(
-                      "${controller.quotesList[index].id}",
-                      style: const TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    title: Text(
-                      "${controller.quotesList[index].quotes![0]}",
-                      style: const TextStyle(color: Colors.white),
-                      overflow: TextOverflow.ellipsis,
+                  return SizedBox(
+                    height: 50,
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed('quotes',
+                            arguments: controller.getQuotesList[index]);
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 80,
+                        alignment: Alignment.center,
+                        margin: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          //color: RandomColorModel().getColor(),
+                          borderRadius: BorderRadius.circular(12),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  "${controller.getQuotesList[index].image![0]}"),
+                              fit: BoxFit.cover),
+                        ),
+                        child: Text(
+                          "${controller.getQuotesList[index].category}",
+                          style: const TextStyle(
+                              fontSize: 25, color: Colors.white),
+                        ),
+                      ),
                     ),
                   );
                 },

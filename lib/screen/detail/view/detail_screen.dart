@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../home/controller/home_controller.dart';
 
@@ -15,10 +14,10 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   HomeController controller = Get.put(HomeController());
-
+  List quotesList = Get.arguments;
   @override
   Widget build(BuildContext context) {
-    int index = ModalRoute.of(context)!.settings.arguments as int;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -54,11 +53,9 @@ class _DetailScreenState extends State<DetailScreen> {
               filter: ImageFilter.blur(sigmaX: 5),
               child: Container(),
             ),
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
             Text(
-              "${controller.quotesList[index].quotes![0]}",
+              "${quotesList[0]}",
               style: const TextStyle(color: Colors.white, fontSize: 22),
               textAlign: TextAlign.center,
             ),

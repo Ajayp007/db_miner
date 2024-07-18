@@ -1,4 +1,5 @@
 import 'package:db_miner/screen/home/model/home_model.dart';
+import 'package:db_miner/screen/quotes/controller/quotes_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,12 +13,13 @@ class QuotesScreen extends StatefulWidget {
 }
 
 class _QuotesScreenState extends State<QuotesScreen> {
-  HomeController controller = Get.put(HomeController());
+  QuotesController controller = Get.put(QuotesController());
+  HomeController homeController = Get.put(HomeController());
   HomeModel m1 = Get.arguments;
 
   @override
   void initState() {
-    controller.getJsonData();
+    homeController.getJsonData();
     super.initState();
   }
 
@@ -27,15 +29,17 @@ class _QuotesScreenState extends State<QuotesScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.insertCategory(m1.category!);
+            },
             icon: const Icon(
               Icons.favorite_border_outlined,
               color: Colors.white,
             ),
           ),
         ],
-        title: const Text(
-          "Quotes",
+        title:  Text(
+          "${m1.category}",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,

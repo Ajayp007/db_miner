@@ -2,17 +2,16 @@ import 'package:get/get.dart';
 
 import '../../../utils/helper/db_helper.dart';
 
-class CategoryController extends GetxController {
+class QuotesController extends GetxController {
   RxList<Map> categoryList = <Map>[].obs;
   DbHelper helper = DbHelper();
-  RxnString image = RxnString();
 
   Future<void> readCategory() async {
     categoryList.value = await helper.readCategoryDB();
   }
 
   void insertCategory(String name) {
-    helper.insertCategoryDB(name, image.value!);
+    helper.insertCategoryDB(name);
     readCategory();
   }
 

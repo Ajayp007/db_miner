@@ -27,7 +27,7 @@ class DbHelper {
       version: 1,
       onCreate: (db, version) {
         String query =
-            "CREATE TABLE cate (id INTEGER PRIMARY KEY AUTOINCREMENT,category TEXT,image BLOB)";
+            "CREATE TABLE cate (id INTEGER PRIMARY KEY AUTOINCREMENT,category TEXT)";
         db.execute(query);
         String query2 =
             "CREATE TABLE quotes(id INTEGER PRIMARY KEY AUTOINCREMENT,quotes TEXT,author TEXT,image BLOB)";
@@ -36,14 +36,10 @@ class DbHelper {
     );
   }
 
-  Future<void> insertCategoryDB(String category, String image) async {
+  Future<void> insertCategoryDB(String category) async {
     db = await checkDB();
-    File path = File(image);
-
-    Uint8List fileImage = await path.readAsBytes();
-    String data = base64Encode(fileImage);
     String query =
-        "INSERT INTO cate (category,image) VALUES ('$category','$data')";
+        "INSERT INTO cate (category) VALUES ('$category')";
     db!.rawInsert(query);
   }
 

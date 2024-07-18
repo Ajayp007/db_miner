@@ -56,7 +56,7 @@ class DbHelper {
     return l1;
   }
 
-  Future<void> insertProductDB(String name, String author, String image) async {
+  Future<void> insertQuotesDB(String name, String author, String image) async {
     db = await checkDB();
     File path = File(image);
 
@@ -67,13 +67,13 @@ class DbHelper {
     db!.rawInsert(query);
   }
 
-  Future<void> deleteProductDB(int index) async {
+  Future<void> deleteQuotesDB(int index) async {
     db = await checkDB();
     String query = "DELETE FROM quotes WHERE id = '$index'";
     db!.rawDelete(query);
   }
 
-  Future<List<Map>> readProductDB() async {
+  Future<List<Map>> readQuotesDB() async {
     db = await checkDB();
     String query = "SELECT * FROM quotes";
     List<Map> l1 = await db!.rawQuery(query);

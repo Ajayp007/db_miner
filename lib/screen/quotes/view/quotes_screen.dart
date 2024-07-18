@@ -40,7 +40,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
         ],
         title:  Text(
           "${m1.category}",
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: const Color(0xff094859),
@@ -51,7 +51,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Get.toNamed('detail', arguments: [m1.quotes![index],m1.image![index],index]);
+              Get.toNamed('detail', arguments: [m1.quotes![index],m1.author![index],m1.image![index]]);
             },
             child: Container(
               height: 80,

@@ -13,9 +13,7 @@ void main() {
       initialRoute: "home",
       debugShowCheckedModeBanner: false,
       routes: appRoutes,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      // themeMode: ,
+       themeMode: ThemeMode.dark,
     ),
   );
 }

@@ -56,7 +56,7 @@ class _DashScreenState extends State<DashScreen> {
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: const Color(0xff094859),
+          backgroundColor: const Color(0xffa0cbd6),
           actions: [
             Switch(
               activeColor: const Color(0xff2395b2),

@@ -95,6 +95,17 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+    - family: mukta
+      fonts:
+        - asset: assets/fonts/Mukta/Mukta-Bold.ttf
+        - asset: assets/fonts/Mukta-Regular.ttf
+          weight: 700
+    - family: noto
+      fonts:
+        - asset: assets/fonts/Noto_Sans/NotoSans-Bold.ttf
+        - asset: assets/fonts/Noto_Sans/NotoSans-Regular.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

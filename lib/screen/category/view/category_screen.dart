@@ -1,3 +1,4 @@
+import 'package:db_miner/screen/detail/controller/detail_controller.dart';
 import 'package:db_miner/screen/home/controller/home_controller.dart';
 import 'package:db_miner/screen/quotes/controller/quotes_controller.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +13,13 @@ class CategoryScreen extends StatefulWidget {
 
 class _CategoryScreenState extends State<CategoryScreen> {
   QuotesController controller = Get.put(QuotesController());
-  HomeController homeController = Get.put(HomeController());
+  DetailController detailController = Get.put(DetailController());
 
   @override
   void initState() {
     super.initState();
     controller.readCategory();
+    detailController.readQuotes();
   }
 
   @override
@@ -33,11 +35,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
               width: MediaQuery.sizeOf(context).width,
               margin: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                      image: NetworkImage(
-                          "${homeController.getQuotesList[index].image![0]}"),
-                      fit: BoxFit.fitWidth)),
+                borderRadius: BorderRadius.circular(12),
+                image: DecorationImage(
+                    image: NetworkImage(
+                        detailController.bgImageList[index]),
+                    fit: BoxFit.fitWidth),
+              ),
               child: ListTile(
                 leading: const Icon(
                   Icons.ac_unit_outlined,

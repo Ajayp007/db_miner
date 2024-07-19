@@ -51,7 +51,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Get.toNamed('detail', arguments: [m1.quotes![index],m1.author![index],m1.image![index]]);
+                Get.toNamed('detail', arguments: [m1.quotes![index],m1.author![index],m1.image![index]]);
             },
             child: Container(
               height: 80,

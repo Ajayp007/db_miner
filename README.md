@@ -37,7 +37,7 @@ Also Remove Planet From Like Quotes And Category.
 <div align="center">
 
 
-https://github.com/Ajayp007/planet_app/assets/156168895/4fc3572c-6da4-4d2d-a20b-d4ea07db7f42
+https://github.com/user-attachments/assets/e2196b02-7b91-447c-9f64-04d77279d57c
 
 
 ### Made with ❤️ in India.

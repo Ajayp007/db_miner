@@ -56,16 +56,17 @@ class _DashScreenState extends State<DashScreen> {
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: const Color(0xffa0cbd6),
+          backgroundColor: const Color(0xff094859),
           actions: [
-            Switch(
-              activeColor: const Color(0xff2395b2),
-              value: themeController.themeMode!,
-              onChanged: (value) {
-                setThemeData(value);
-                themeController.setTheme();
-              },
-            ),
+            // Switch(
+            //   activeColor: const Color(0xff2395b2),
+            //   value: themeController.theme!,
+            //   onChanged: (value) {
+            //
+            //     themeController.setTheme();
+            //     setThemeData(value);
+            //   },
+            // ),
           ],
         ),
         body: const TabBarView(
